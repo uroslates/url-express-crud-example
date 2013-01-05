@@ -7,7 +7,12 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , mongoose = require('mongoose')
+  , crud = require('url-express-crud');
+
+// Database connection
+mongoose.connect('mongodb://localhost/url_express_crud_example');
 
 var app = express();
 
