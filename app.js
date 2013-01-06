@@ -40,6 +40,10 @@ app.get('/users', user.list);
 var productCrudRoutes = new crud.CRUDRouter({
   app: app
   , Model: Product
+  // Custom templates configuration
+  , templates: {
+    rootDir: 'products/'
+  }
 });
 
 http.createServer(app).listen(app.get('port'), function(){
