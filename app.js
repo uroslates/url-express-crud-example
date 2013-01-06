@@ -36,7 +36,8 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-// Using url-express-crud for exposing Product's model CRUD operations
+
+// Using url-express-crud for  exposing Product's model CRUD operations
 var productCrudRoutes = new crud.CRUDRouter({
   app: app
   , Model: Product
@@ -51,7 +52,30 @@ var productCrudRoutes = new crud.CRUDRouter({
   , resourceRequestParamName: 'product'
   // Override context variable name
   , resourceRequestParamNamePlural: 'products'
+  // Customize list route
+  , routes: {
+      list: [
+        // Request type (verb)
+        'get'
+        // Configuration array: [<uri>, [middleware, ...], <route handler function>]
+        , [
+          // URI
+          '/products/'
+          // Custom middleware
+          , function(res, req, next) {
+            console.log('\n\n\t* CUSTOM LIST <ROUTE MIDDLEWARE> EXECUTING...');
+            next();
+          }
+          // Custom route handler
+          , function(req, res, next) {
+            console.log('\n\n\t* CUSTOM LIST <ROUTE> EXECUTING...\n\n');
+            res.end('Custom LIST route!');
+          }
+        ]
+      ]
+    }
 });
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
