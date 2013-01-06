@@ -1,0 +1,51 @@
+extends ../layout
+block content
+
+  .navbar
+    .navbar-inner
+        a.brand(href="/objects/#{object.slug}") Product: 
+          strong=object.name
+        ul.nav
+            - if(object.isNew)
+              li.active
+                a(href="/objects/form/") Create
+            - else
+              li
+                a(href="/objects/form/") Create
+            li
+                a(href="/objects/#{object.slug}/") Details
+            - if(!object.isNew)
+              li.active
+                a(href="/objects/form/#{object.slug}/") Update
+            - else
+              li
+                a(href="/objects/form/#{object.slug}/") Update
+            li
+                a(href="/objects/#{object.slug}/delete/") Delete
+            li
+                a(href="/objects/") List
+
+  form(action='/objects/', method='post')
+
+      input(name='object[_id]', value='#{object.id}', type='hidden')
+
+      - if(!object.isNew)
+        input(name='_method', value='PUT', type='hidden')
+
+      .control-group
+        label.control-label(for='object_name') Product Name
+        .controls
+          input#object_name.input-xxlarge(type='text', placeholder='Name', name='object[name]', value='#{object.name}')
+      .control-group
+        label.control-label(for='object_slug') Slug
+        .controls
+          input#object_slug.input-xxlarge(type='text', placeholder='Slug', name='object[slug]', value='#{object.slug}')
+      .control-group
+        label.control-label(for='object_img') Image
+        .controls
+          input#object_img.input-xxlarge(type='text', placeholder='Image', name='object[img]', value='#{object.img}')
+      .control-group
+        label.control-label(for='object_description') Description
+        .controls
+          textarea#message_message.input-xxlarge(placeholder='Description', rows='6', name='object[description]')=object.description
+      button.btn(type='submit') Save Product

@@ -1,0 +1,33 @@
+extends ../layout
+block content
+
+  .navbar
+    .navbar-inner
+        a.brand(href="/objects/#{object.slug}") Product: 
+          strong=object.name
+        ul.nav
+            li
+                a(href="/objects/form/") Create
+            li.active
+                a(href="/objects/#{object.slug}/") Details
+            li
+                a(href="/objects/form/#{object.slug}/") Update
+            li
+                a(href="/objects/#{object.slug}/delete/") Delete
+            li
+                a(href="/objects/") List
+
+
+  .row-fluid
+    - if(object)
+      ul.thumbnails
+        li
+          .thumbnail
+            a(href="/objects/#{object.slug}")
+              img(alt="300x200", style="width: 300px; height: 200px;", src="#{object.img}")
+            .caption
+              a(href="/objects/#{object.slug}")
+                h3=object.name
+              p=object.description
+    - else
+      p.clearfix Resource not found!

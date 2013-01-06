@@ -1,7 +1,27 @@
-doctype 5
+!!!
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='/stylesheets/style.bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.bootstrap.responsive.css')
   body
-    block content
+    
+    .navbar
+      .navbar-inner
+        .container
+          a.brand(href='/', style="margin-top:5px;") URL CRUD
+          .nav-collapse.collapse
+            include includes/main_menu
+
+    .container
+
+      block content
+
+      include includes/footer
+
+    script(src="http://code.jquery.com/jquery-1.8.0.min.js", type="text/javascript")
+    script(src="/stylesheets/bootstrap/docs/assets/js/bootstrap.min.js", type="text/javascript")
+    script(src="/javascripts/bootstrap.min.js", type="text/javascript")
+    script(src="/stylesheets/script.js", type="text/javascript")
+

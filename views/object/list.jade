@@ -1,0 +1,22 @@
+extends ../layout
+block content
+
+
+    .navbar
+        .navbar-inner
+            a.brand(href="/objects/") Products
+            ul.nav
+                li
+                    a(href="/objects/form/") Create
+
+    section.objects
+        
+    - if(objects.length)
+        .row-fluid
+            each item in objects
+                .preview-widget(style="float:left;margin-right:60px")
+                    a(href="/objects/#{item.slug}")
+                        img(src="#{item.img}", alt="#{item.name})
+                        .mask
+                            h2=item.name
+                            p=item.description
