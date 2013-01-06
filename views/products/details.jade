@@ -3,31 +3,31 @@ block content
 
   .navbar
     .navbar-inner
-        a.brand(href="/products/#{object.slug}") Product: 
-          strong=object.name
+        a.brand(href="/products/#{product.slug}") Product: 
+          strong=product.name
         ul.nav
             li
                 a(href="/products/form/") Create
             li.active
-                a(href="/products/#{object.slug}/") Details
+                a(href="/products/#{product.slug}/") Details
             li
-                a(href="/products/form/#{object.slug}/") Update
+                a(href="/products/form/#{product.slug}/") Update
             li
-                a(href="/products/#{object.slug}/delete/") Delete
+                a(href="/products/#{product.slug}/delete/") Delete
             li
                 a(href="/products/") List
 
 
   .row-fluid
-    - if(object)
+    - if(product)
       ul.thumbnails
         li
           .thumbnail
-            a(href="/products/#{object.slug}")
-              img(alt="300x200", style="width: 300px; height: 200px;", src="#{object.img}")
+            a(href="/products/#{product.slug}")
+              img(alt="300x200", style="width: 300px; height: 200px;", src="#{product.img}")
             .caption
-              a(href="/products/#{object.slug}")
-                h3=object.name
-              p=object.description
+              a(href="/products/#{product.slug}")
+                h3=product.name
+              p=product.description
     - else
       p.clearfix Resource not found!

@@ -3,49 +3,49 @@ block content
 
   .navbar
     .navbar-inner
-        a.brand(href="/products/#{object.slug}") Product: 
-          strong=object.name
+        a.brand(href="/products/#{product.slug}") Product: 
+          strong=product.name
         ul.nav
-            - if(object.isNew)
+            - if(product.isNew)
               li.active
                 a(href="/products/form/") Create
             - else
               li
                 a(href="/products/form/") Create
             li
-                a(href="/products/#{object.slug}/") Details
-            - if(!object.isNew)
+                a(href="/products/#{product.slug}/") Details
+            - if(!product.isNew)
               li.active
-                a(href="/products/form/#{object.slug}/") Update
+                a(href="/products/form/#{product.slug}/") Update
             - else
               li
-                a(href="/products/form/#{object.slug}/") Update
+                a(href="/products/form/#{product.slug}/") Update
             li
-                a(href="/products/#{object.slug}/delete/") Delete
+                a(href="/products/#{product.slug}/delete/") Delete
             li
                 a(href="/products/") List
 
   form(action='/products/', method='post')
 
-      input(name='object[_id]', value='#{object.id}', type='hidden')
+      input(name='product[_id]', value='#{product.id}', type='hidden')
 
-      - if(!object.isNew)
+      - if(!product.isNew)
         input(name='_method', value='PUT', type='hidden')
 
       .control-group
-        label.control-label(for='object_name') Product Name
+        label.control-label(for='product_name') Product Name
         .controls
-          input#object_name.input-xxlarge(type='text', placeholder='Name', name='object[name]', value='#{object.name}')
+          input#product_name.input-xxlarge(type='text', placeholder='Name', name='product[name]', value='#{product.name}')
       .control-group
-        label.control-label(for='object_slug') Slug
+        label.control-label(for='product_slug') Slug
         .controls
-          input#object_slug.input-xxlarge(type='text', placeholder='Slug', name='object[slug]', value='#{object.slug}')
+          input#product_slug.input-xxlarge(type='text', placeholder='Slug', name='product[slug]', value='#{product.slug}')
       .control-group
-        label.control-label(for='object_img') Image
+        label.control-label(for='product_img') Image
         .controls
-          input#object_img.input-xxlarge(type='text', placeholder='Image', name='object[img]', value='#{object.img}')
+          input#product_img.input-xxlarge(type='text', placeholder='Image', name='product[img]', value='#{product.img}')
       .control-group
-        label.control-label(for='object_description') Description
+        label.control-label(for='product_description') Description
         .controls
-          textarea#message_message.input-xxlarge(placeholder='Description', rows='6', name='object[description]')=object.description
+          textarea#message_message.input-xxlarge(placeholder='Description', rows='6', name='product[description]')=product.description
       button.btn(type='submit') Save Product
