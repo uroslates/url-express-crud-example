@@ -43,6 +43,7 @@ var productCrudRoutes = new crud.CRUDRouter({
   // Custom templates configuration
   , templates: {
     rootDir: 'products/'
+    , list: '../generic/list'
   }
 });
 
