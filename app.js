@@ -45,6 +45,8 @@ var productCrudRoutes = new crud.CRUDRouter({
     rootDir: 'products/'
     , list: '../generic/list'
   }
+  // TODO: To override base uri's use below
+  , routeBaseUri: '/products/'
 });
 
 http.createServer(app).listen(app.get('port'), function(){

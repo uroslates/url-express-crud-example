@@ -3,29 +3,29 @@ block content
 
   .navbar
     .navbar-inner
-        a.brand(href="/objects/#{object.slug}") Product: 
+        a.brand(href="/products/#{object.slug}") Product: 
           strong=object.name
         ul.nav
             - if(object.isNew)
               li.active
-                a(href="/objects/form/") Create
+                a(href="/products/form/") Create
             - else
               li
-                a(href="/objects/form/") Create
+                a(href="/products/form/") Create
             li
-                a(href="/objects/#{object.slug}/") Details
+                a(href="/products/#{object.slug}/") Details
             - if(!object.isNew)
               li.active
-                a(href="/objects/form/#{object.slug}/") Update
+                a(href="/products/form/#{object.slug}/") Update
             - else
               li
-                a(href="/objects/form/#{object.slug}/") Update
+                a(href="/products/form/#{object.slug}/") Update
             li
-                a(href="/objects/#{object.slug}/delete/") Delete
+                a(href="/products/#{object.slug}/delete/") Delete
             li
-                a(href="/objects/") List
+                a(href="/products/") List
 
-  form(action='/objects/', method='post')
+  form(action='/products/', method='post')
 
       input(name='object[_id]', value='#{object.id}', type='hidden')
 
