@@ -10,7 +10,8 @@ var express = require('express')
   , path = require('path')
   , mongoose = require('mongoose')
   , crud = require('url-express-crud')
-  , Product = require('./models/product');
+  , Product = require('./models/product')
+  , ProductInMemoryProvider = require('./providers/product');
 
 // Database connection
 mongoose.connect('mongodb://localhost/url_express_crud_example');
@@ -52,28 +53,10 @@ var productCrudRoutes = new crud.CRUDRouter({
   , resourceRequestParamName: 'product'
   // Override context variable name
   , resourceRequestParamNamePlural: 'products'
-  // Customize list route
-  , routes: {
-      list: [
-        // Request type (verb)
-        'get'
-        // Configuration array: [<uri>, [middleware, ...], <route handler function>]
-        , [
-          // URI
-          '/products/'
-          // Custom middleware
-          , function(res, req, next) {
-            console.log('\n\n\t* CUSTOM LIST <ROUTE MIDDLEWARE> EXECUTING...');
-            next();
-          }
-          // Custom route handler
-          , function(req, res, next) {
-            console.log('\n\n\t* CUSTOM LIST <ROUTE> EXECUTING...\n\n');
-            res.end('Custom LIST route!');
-          }
-        ]
-      ]
-    }
+  // Configure lib to use different persistence layer for retrieving resource data
+  , controller: new crud.BaseResourceController({
+      resourceProvider: new ProductInMemoryProvider()
+    })
 });
 
 
