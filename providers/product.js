@@ -24,7 +24,7 @@ var ProductInMemoryProvider = function(config) {
 			_id: '1'
 			, name: 'Product 1'
 			, description: 'Product 1 lorem ipsum dolet sum...'
-			, img: ''
+			, img: 'http://flickholdr.com/300/300/forest'
 			, slug: 'product-1'
 			, createdOn: new Date()
 		}
@@ -32,7 +32,7 @@ var ProductInMemoryProvider = function(config) {
 			_id: '2'
 			, name: 'Product 2'
 			, description: 'Product 2 lorem ipsum dolet sum...'
-			, img: ''
+			, img: 'http://flickholdr.com/300/300/sea'
 			, slug: 'product-2'
 			, createdOn: new Date()
 		}
@@ -40,7 +40,7 @@ var ProductInMemoryProvider = function(config) {
 			_id: '3'
 			, name: 'Product 3'
 			, description: 'Product 3 lorem ipsum dolet sum...'
-			, img: ''
+			, img: 'http://flickholdr.com/300/300/nature'
 			, slug: 'product-3'
 			, createdOn: new Date()
 		};
